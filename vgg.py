@@ -1,14 +1,13 @@
+import math
+
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
-import math
 from torch.nn.parameter import Parameter
-
 
 __all__ = [
     'VGG', 'vgg11', 'vgg11_bn', 'vgg13', 'vgg13_bn', 'vgg16', 'vgg16_bn',
     'vgg19_bn', 'vgg19',
 ]
-
 
 model_urls = {
     'vgg11': 'https://download.pytorch.org/models/vgg11-bbd30ac9.pth',
@@ -17,9 +16,14 @@ model_urls = {
     'vgg19': 'https://download.pytorch.org/models/vgg19-dcbb9e9d.pth',
 }
 
-
+'''
+VGG module privdes simple interface to generate different versions of VGG
+models.
+'''
 class VGG(nn.Module):
-
+    '''
+    class : VGG
+    '''
     def __init__(self, features, num_classes=1000):
         super(VGG, self).__init__()
         self.features = features
@@ -33,12 +37,16 @@ class VGG(nn.Module):
         self.final = nn.Linear(4096, num_classes)
         self._initialize_weights()
 
-    def forward(self, x):
-        x = self.features(x)
-        x = x.view(x.size(0), -1)
-        x = self.classifier(x)
-        x = self.final(x)
-        return x
+    def forward(self, img):
+        '''
+        forward propagation.
+        img : input image
+        '''
+        conv_feature = self.features(img)
+        fc_feature = conv_feature.view(conv_feature.size(0), -1)
+        last_feature = self.classifier(fc_feature)
+        prediction = self.final(last_feature)
+        return prediction
 
     def _initialize_weights(self):
         for m in self.modules():
@@ -56,8 +64,9 @@ class VGG(nn.Module):
                 m.bias.data.zero_()
 
     def load_pretrained_model(self, state_dict):
-        """Modified from load_state_dict function
-        This function tries to load the classification model pre-trained on ImageNet 
+        """
+        Modified from load_state_dict function
+        This function tries to load the classification model pre-trained on ImageNet
         Arguments:
             state_dict (dict): A dict containing parameters and
                 persistent buffers.
@@ -65,16 +74,16 @@ class VGG(nn.Module):
         own_state = self.state_dict()
         for name, param in state_dict.items():
             if name not in own_state:
-                print("=>{} is in the pretrained model, but not in the current model".format(name))
+                print "=>{} is in the pretrained model, but not in the current model".format(name)
                 continue
-            print("=> loading {}".format(name))
+            print "=> loading {}".format(name)
             if isinstance(param, Parameter):
                 # backwards compatibility for serialized parameters
                 param = param.data
             own_state[name].copy_(param)
 
         missing = set(own_state.keys()) - set(state_dict.keys())
-        print("The following parameters are not set by the pre-trained model:", missing)
+        print ("The following parameters are not set by the pre-trained model:", missing)
 
 
 def make_layers(cfg, batch_norm=False):
