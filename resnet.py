@@ -1,14 +1,16 @@
-import torch.nn as nn
+"""
+Residual network definition
+"""
 import math
+
+import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
 from torch.nn.parameter import Parameter
-
 
 __all__ = ['ResNet', 'resnet18', 'resnet34', 'resnet50', 'resnet101',
            'resnet152']
 
-
-model_urls = {
+MODEL_URLS = {
     'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
     'resnet34': 'https://download.pytorch.org/models/resnet34-333f7ec4.pth',
     'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
@@ -16,14 +18,15 @@ model_urls = {
     'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
 }
 
-
 def conv3x3(in_planes, out_planes, stride=1):
     "3x3 convolution with padding"
     return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
                      padding=1, bias=False)
 
-
 class BasicBlock(nn.Module):
+    """
+    Basic blocks used for Residual Net.
+    """
     expansion = 1
 
     def __init__(self, inplanes, planes, stride=1, downsample=None):
@@ -56,6 +59,9 @@ class BasicBlock(nn.Module):
 
 
 class Bottleneck(nn.Module):
+    """
+    Bottleneck version of Basic blocks used for Residual Net.
+    """
     expansion = 4
 
     def __init__(self, inplanes, planes, stride=1, downsample=None):
@@ -95,7 +101,9 @@ class Bottleneck(nn.Module):
 
 
 class ResNet(nn.Module):
-
+    """
+    Residual Network class
+    """
     def __init__(self, block, layers, num_classes=1000):
         self.inplanes = 64
         super(ResNet, self).__init__()
@@ -122,7 +130,7 @@ class ResNet(nn.Module):
 
     def load_pretrained_model(self, state_dict):
         """Modified from load_pretrained_model function
-        This function tries to load the classification model pre-trained on ImageNet 
+        This function tries to load the classification model pre-trained on ImageNet
         Arguments:
             state_dict (dict): A dict containing parameters and
                 persistent buffers.
@@ -130,9 +138,9 @@ class ResNet(nn.Module):
         own_state = self.state_dict()
         for name, param in state_dict.items():
             if name not in own_state:
-                print("=>{} is in the pretrained model, but not in the current model".format(name))
+                print "=>{} is in the pretrained model, but not in the current model".format(name)
                 continue
-            print("=> loading {}".format(name))
+            print "=> loading {}".format(name)
             if isinstance(param, Parameter):
                 # backwards compatibility for serialized parameters
                 param = param.data
@@ -185,7 +193,7 @@ def resnet18(pretrained=False, **kwargs):
     """
     model = ResNet(BasicBlock, [2, 2, 2, 2], **kwargs)
     if pretrained:
-        model.load_pretrained_model(model_zoo.load_url(model_urls['resnet18']))
+        model.load_pretrained_model(model_zoo.load_url(MODEL_URLS['resnet18']))
     return model
 
 
@@ -197,7 +205,7 @@ def resnet34(pretrained=False, **kwargs):
     """
     model = ResNet(BasicBlock, [3, 4, 6, 3], **kwargs)
     if pretrained:
-        model.load_pretrained_model(model_zoo.load_url(model_urls['resnet34']))
+        model.load_pretrained_model(model_zoo.load_url(MODEL_URLS['resnet34']))
     return model
 
 
@@ -209,7 +217,7 @@ def resnet50(pretrained=False, **kwargs):
     """
     model = ResNet(Bottleneck, [3, 4, 6, 3], **kwargs)
     if pretrained:
-        model.load_pretrained_model(model_zoo.load_url(model_urls['resnet50']))
+        model.load_pretrained_model(model_zoo.load_url(MODEL_URLS['resnet50']))
     return model
 
 
@@ -221,7 +229,7 @@ def resnet101(pretrained=False, **kwargs):
     """
     model = ResNet(Bottleneck, [3, 4, 23, 3], **kwargs)
     if pretrained:
-        model.load_pretrained_model(model_zoo.load_url(model_urls['resnet101']))
+        model.load_pretrained_model(model_zoo.load_url(MODEL_URLS['resnet101']))
     return model
 
 
@@ -233,5 +241,5 @@ def resnet152(pretrained=False, **kwargs):
     """
     model = ResNet(Bottleneck, [3, 8, 36, 3], **kwargs)
     if pretrained:
-        model.load_pretrained_model(model_zoo.load_url(model_urls['resnet152']))
+        model.load_pretrained_model(model_zoo.load_url(MODEL_URLS['resnet152']))
     return model
