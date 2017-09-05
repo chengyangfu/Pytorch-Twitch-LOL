@@ -27,27 +27,27 @@ python main.py --batch-size=32 --model=vision --save-dir=./save_LSTMCNN_gt025 --
 python main.py --batch-size=32 --model=multi  --preTrained  --gt-range=0.25  --text-window=210 --multi-frame=16 --save-dir=./save_Multi_gt025
 
 # Train lms 
-python  main.py --batch-size=32 --noImg --model=lang --gt-range=0.25 --save-dir=./save_lms_lang_gt025_tw210 --text-window=210 --train_annFile=/net/bvision9/playpen/cyfu/twitch_lol_dataset/lms_train.txt --val_annFile=/net/bvision9/playpen/cyfu/twitch_lol_dataset/lms_val.txt
+python  main.py --batch-size=32 --noImg --model=lang --gt-range=0.25 --save-dir=./save_lms_lang_gt025_tw210 --text-window=210 --train_annFile=./EMNLP17_Twitch_LOL/lms_train.txt --val_annFile=./EMNLP17_Twitch_LOL/lms_val.txt
 
-python  main.py --batch-size=32 --noImg --model=lang --gt-range=1.0 --save-dir=./save_lms_lang_gt100_tw210 --text-window=210 --train_annFile=/net/bvision9/playpen/cyfu/twitch_lol_dataset/lms_train.txt --val_annFile=/net/bvision9/playpen/cyfu/twitch_lol_dataset/lms_val.txt
+python  main.py --batch-size=32 --noImg --model=lang --gt-range=1.0 --save-dir=./save_lms_lang_gt100_tw210 --text-window=210 --train_annFile=./EMNLP17_Twitch_LOL/lms_train.txt --val_annFile=./EMNLP17_Twitch_LOL/lms_val.txt
 
 # NALCS final test ----------------------------------------------------------------------
 # Language model
-python  main.py --batch-size=32 --noImg --model=lang --gt-range=0.25  --text-window=210  --train_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/nalcs_trainval.txt  --val_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/nalcs_test.txt --save-dir=./save_lang_test
+python  main.py --batch-size=32 --noImg --model=lang --gt-range=0.25  --text-window=210  --train_annFile=./EMNLP17_Twitch_LOL/nalcs_trainval.txt  --val_annFile=./EMNLP17_Twitch_LOL/nalcs_test.txt --save-dir=./save_lang_test
 
 # Vision Model
-python main.py --batch-size=32 --model=vision  --preTrained  --gt-range=0.25 --multi-frame=16 --train_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/nalcs_trainval.txt  --val_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/nalcs_test.txt --save-dir=./save_LSTMCNN_test --workers=12
+python main.py --batch-size=32 --model=vision  --preTrained  --gt-range=0.25 --multi-frame=16 --train_annFile=./EMNLP17_Twitch_LOL/nalcs_trainval.txt  --val_annFile=./EMNLP17_Twitch_LOL/nalcs_test.txt --save-dir=./save_LSTMCNN_test --workers=12
 
 # Multi  Model
-python main.py --batch-size=32 --model=multi  --preTrained  --gt-range=0.25  --text-window=210 --multi-frame=16 --train_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/nalcs_trainval.txt  --val_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/nalcs_test.txt --save-dir=./save_Multi_test --workers=12
+python main.py --batch-size=32 --model=multi  --preTrained  --gt-range=0.25  --text-window=210 --multi-frame=16 --train_annFile=./EMNLP17_Twitch_LOL/nalcs_trainval.txt  --val_annFile=./EMNLP17_Twitch_LOL/nalcs_test.txt --save-dir=./save_Multi_test --workers=12
 
 # LMS final test ----------------------------------------------------------------------
 # Language model
-python  main.py --batch-size=32 --noImg --model=lang --gt-range=0.25  --text-window=210  --train_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/lms_trainval.txt  --val_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/lms_test.txt --save-dir=./save_lang_test_lms
+python  main.py --batch-size=32 --noImg --model=lang --gt-range=0.25  --text-window=210  --train_annFile=./EMNLP17_Twitch_LOL/lms_trainval.txt  --val_annFile=./EMNLP17_Twitch_LOL/lms_test.txt --save-dir=./save_lang_test_lms
 
 # Vision Model
-python main.py --batch-size=32 --model=vision  --preTrained  --gt-range=0.25 --multi-frame=16 --train_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/lms_trainval.txt  --val_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/lms_test.txt --save-dir=./save_LSTMCNN_test_lms --workers=12
+python main.py --batch-size=32 --model=vision  --preTrained  --gt-range=0.25 --multi-frame=16 --train_annFile=./EMNLP17_Twitch_LOL/lms_trainval.txt  --val_annFile=./EMNLP17_Twitch_LOL/lms_test.txt --save-dir=./save_LSTMCNN_test_lms --workers=12
 
 # Multi  Model
-python main.py --batch-size=32 --model=multi  --preTrained  --gt-range=0.25  --text-window=210 --multi-frame=16 --train_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/lms_trainval.txt  --val_annFile=/net/bvisionserver3/playpen10/cyfu/twitch_lol/lms_test.txt --save-dir=./save_Multi_test_lms --workers=12
+python main.py --batch-size=32 --model=multi  --preTrained  --gt-range=0.25  --text-window=210 --multi-frame=16 --train_annFile=./EMNLP17_Twitch_LOL/lms_trainval.txt  --val_annFile=./EMNLP17_Twitch_LOL/lms_test.txt --save-dir=./save_Multi_test_lms --workers=12
 
