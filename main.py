@@ -23,17 +23,17 @@ from models import *
 parser = argparse.ArgumentParser(description='PyTorch Video Summary')
 parser.add_argument('--train_data_path', dest='train_data_path',
                     help='Directory contains the training images',
-                    default='/net/bvisionserver3/playpen10/cyfu/twitch_lol/',
+                    default='./EMNLP17_Twitch_LOL',
                     type=str, metavar='PATH')
 
 parser.add_argument('--train_annFile', dest='train_ann',
                     help='List file contains location of images and labels',
-                    default='/net/bvisionserver3/playpen10/cyfu/twitch_lol/nalcs_train.txt',
+                    default='./nalcs_train.txt',
                     type=str, metavar='PATH')
 
 parser.add_argument('--val_annFile', dest='val_ann',
                     help='List file contains location of images and labels',
-                    default='/net/bvisionserver3/playpen10/cyfu/twitch_lol/nalcs_val.txt',
+                    default='./EMNLP17_Twitch_LOL/nalcs_val.txt',
                     type=str, metavar='PATH')
 
 parser.add_argument('-j', '--workers', default=4, type=int, metavar='N',

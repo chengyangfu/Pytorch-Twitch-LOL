@@ -169,7 +169,7 @@ class Twitch(data.Dataset):
         if self.prod_Text :
             text = self.text_list[vid][min(vframe + self.text_delay, len(self.text_list[vid]))
                     : min(vframe + self.text_window + self.text_delay, len(self.text_list[vid]) )]
-            text = ''.join(text)
+            text = '\n'.join(text)
 
         gt   = self.gt_list[vid][vframe]
 
