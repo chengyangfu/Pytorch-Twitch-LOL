@@ -22,7 +22,7 @@ PyTorch implementation and dataset of Video Highlight Prediction Using Audience 
  
  ```shell
  cd EMNLP17_Twitch_LOL
- python compressVideo.py
+ python compressVideo.py (This requires around 378 GB)
  ```
 ## Run Training. 
 
