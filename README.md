@@ -18,15 +18,15 @@ PyTorch implementation and dataset of Video Highlight Prediction Using Audience 
 ## Dataset Download - Google Drive 
 
  - https://drive.google.com/drive/folders/0By9LEMeCDdboVDlHTDlqQUNHMnc?usp=sharing
- - Before training, it is important to convert encoding of video from h.264 to mpeg and resize the resolution. 
+ - Before training, it is important to convert the encoding of video from h.264 to mpeg and resize the resolution. 
  
  ```shell
  cd EMNLP17_Twitch_LOL
  python compressVideo.py (This requires around 378 GB)
  ```
-## Run Training. 
+## Run Training 
 
- - Check the run.sh file. This script contains all the configuration of the experiments. 
+ - Check the run.sh file. This script contains all the configurations of the experiments. 
  - If you want to evaluate the trained model, simply use the same command used in training and add `-e`. 
 
 
