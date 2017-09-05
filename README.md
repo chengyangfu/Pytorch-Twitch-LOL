@@ -1,5 +1,5 @@
 # pytorch-Twitch-LOL
-PyTorch implementation of Video Summarization on Twitch (LOL) dataset
+PyTorch implementation and dataset of Video Highlight Prediction Using Audience Chat Reactions, 2017 EMNLP.
 
 
 ## Library Requirement 
