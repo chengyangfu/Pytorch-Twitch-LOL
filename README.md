@@ -27,7 +27,7 @@ PyTorch implementation and dataset of Video Highlight Prediction Using Audience 
 ## Run Training. 
 
  - Check the run.sh file. This script contains all the configuration of the experiments. 
- - If you want to evaluate the trained model, simply use the same command used in training + -e
+ - If you want to evaluate the trained model, simply use the same command used in training and add `-e`. 
 
 
 ### Citing 
