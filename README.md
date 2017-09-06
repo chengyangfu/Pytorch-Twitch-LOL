@@ -1,4 +1,4 @@
-# pytorch-Twitch-LOL
+# Pytorch-Twitch-LOL
 PyTorch implementation and dataset of Video Highlight Prediction Using Audience Chat Reactions, 2017 EMNLP.
 
 
@@ -18,7 +18,7 @@ PyTorch implementation and dataset of Video Highlight Prediction Using Audience 
 ## Dataset Download - Google Drive 
 
  - https://drive.google.com/drive/folders/0By9LEMeCDdboVDlHTDlqQUNHMnc?usp=sharing
- - Before training, it is important to convert the encoding of video from h.264 to mpeg and resize the resolution. 
+ - Before training, it is important to convert the encoding of video from h.264 to mpeg and resize the resolution. Check the compressVideo.py, if you need to change the input resolution of vision models.  
  
  ```shell
  cd EMNLP17_Twitch_LOL
