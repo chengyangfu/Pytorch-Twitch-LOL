@@ -2,6 +2,13 @@
 PyTorch implementation and dataset of Video Highlight Prediction Using Audience Chat Reactions, 2017 EMNLP.
 
 
+### Add the original chat files. 
+In the Google Drive, there are two new files and one new directory. 
+cutChatRoom.py is the script I used to cut the twitch chats to separate games. 
+```shell
+ python cutChatRoom.py (will read cut_video3.txt to generate chat file for each video and store in final_data)
+ ```
+
 ## Library Requirement 
 
 ### Apt-get install 
